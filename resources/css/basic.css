@@ -1,0 +1,54 @@
+topholder{
+position: relative;
+margin: 0px auto;
+height: 40px;
+width: 700px;
+text-align: center;
+border: 1px solid black;
+
+}
+
+#body{
+z-index: -30;
+}
+
+#topheader {
+position: absolute;
+width:  600px;
+   left: 25%;
+   width: 50%;
+text-align: center;
+height: 40px;
+font-size: 30px;
+font-family: 'Lobster', arial, serif;
+    border: none; !important
+}
+
+#switcher {
+   left: 75%;
+   width: 50px%;
+position: absolute;
+
+}
+
+#content {
+    position: absolute;
+    top:60px;
+    left: 1%;
+    right: 1%;
+    margin-left: 0px auto;
+    margin-right: 0px auto;
+    bottom: 0px;
+    margin-bottom:20px; 
+}
+
+#drop_zone{
+    margin: 20px;
+    width: 200px; 
+    height: 100px;
+    text-align: center;
+    border: 3px dashed black;
+    font-size: 15px;
+    font-family: 'Lobster', arial, serif;
+}
+

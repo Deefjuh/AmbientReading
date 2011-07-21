@@ -25,15 +25,15 @@
     }
 
     JSUnzip.ZipEntry = function (binaryStream) {
-        this.signature = binaryStream.getNextBytesAsNumber(4);
+        this.signature          = binaryStream.getNextBytesAsNumber(4);
         if (this.signature !== JSUnzip.MAGIC_NUMBER) {
             return;
         }
 
-        this.versionNeeded = binaryStream.getNextBytesAsNumber(2);
-        this.bitFlag = binaryStream.getNextBytesAsNumber(2);
-        this.compressionMethod = binaryStream.getNextBytesAsNumber(2);
-        this.timeBlob = binaryStream.getNextBytesAsNumber(4);
+        this.versionNeeded      = binaryStream.getNextBytesAsNumber(2);
+        this.bitFlag            = binaryStream.getNextBytesAsNumber(2);
+        this.compressionMethod  = binaryStream.getNextBytesAsNumber(2);
+        this.timeBlob           = binaryStream.getNextBytesAsNumber(4);
 
         if (this.isEncrypted()) {
             throw "File contains encrypted entry. Not supported.";
@@ -47,20 +47,20 @@
             throw "File is using bit 3 trailing data descriptor. Not supported.";
         }
 
-        this.crc32 = binaryStream.getNextBytesAsNumber(4);
-        this.compressedSize = binaryStream.getNextBytesAsNumber(4);
-        this.uncompressedSize = binaryStream.getNextBytesAsNumber(4);
+        this.crc32              = binaryStream.getNextBytesAsNumber(4);
+        this.compressedSize     = binaryStream.getNextBytesAsNumber(4);
+        this.uncompressedSize   = binaryStream.getNextBytesAsNumber(4);
 
         if (this.isUsingZip64()) {
             throw "File is using Zip64 (4gb+ file size). Not supported";
         }
 
-        this.fileNameLength = binaryStream.getNextBytesAsNumber(2);
-        this.extraFieldLength = binaryStream.getNextBytesAsNumber(2);
+        this.fileNameLength     = binaryStream.getNextBytesAsNumber(2);
+        this.extraFieldLength   = binaryStream.getNextBytesAsNumber(2);
 
-        this.fileName = binaryStream.getNextBytesAsString(this.fileNameLength);
-        this.extra = binaryStream.getNextBytesAsString(this.extraFieldLength);
-        this.data = binaryStream.getNextBytesAsString(this.compressedSize);
+        this.fileName  = binaryStream.getNextBytesAsString(this.fileNameLength);
+        this.extra     = binaryStream.getNextBytesAsString(this.extraFieldLength);
+        this.data      = binaryStream.getNextBytesAsString(this.compressedSize);
     }
 
     JSUnzip.ZipEntry.prototype = {

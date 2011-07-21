@@ -18,14 +18,14 @@
         // get called with a number and a optional info parameter on various
         // steps of the processing:
         //
-        // 1: Unzipping
-        // 2: Uncompressing file. File name passed as 2nd argument.
-        // 3: Reading OPF
-        // 4: Post processing
-        // 5: Finished!
+        //  1: Unzipping
+        //  2: Uncompressing file. File name passed as 2nd argument.
+        //  3: Reading OPF
+        //  4: Post processing
+        //  5: Finished!
         //
         // Error codes:
-        // -1: File is not a proper Zip file.
+        //  -1: File is not a proper Zip file.
         processInSteps: function (notifier) {
             notifier(1);
             if (this.unzipBlob(notifier) === false) {
@@ -87,7 +87,7 @@
                 data = this.inflate(compressedFile.data);
             } else {
                 throw new Error("Unknown compression method "
-                                + compressedFile.compressionMethod
+                                + compressedFile.compressionMethod 
                                 + " encountered.");
             }
 
